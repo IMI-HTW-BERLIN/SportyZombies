@@ -12,6 +12,6 @@
 public enum CommandWords
 {
     // a constant array that holds all valid command words
-    GO, HELP, QUIT, LOOK, UNKNOWN;
+    GO, HELP, QUIT, LOOK, OPEN, UNKNOWN;
     
 }

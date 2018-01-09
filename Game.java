@@ -97,19 +97,6 @@ public class Game
     }
 
     /**
-     * Print out the opening message for the player.
-     */
-    private void printWelcome()
-    {
-        System.out.println();
-        System.out.println("Welcome to the World of Warcraft!");
-        System.out.println("World of Zombies is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.");
-        System.out.println();
-        System.out.println(currentLocation.getLongDescription());
-    }
-
-    /**
      * Given a command, process (that is: execute) the command.
      * @param command The command to be processed.
      * @return true If the command ends the game, false otherwise.
@@ -132,8 +119,23 @@ public class Game
             wantToQuit = quit(command);
         else if (commandWord.equals("look"))
             look();
+        else if (commandWord.equals("open"))
+            open(command);
 
         return wantToQuit;
+    }
+    
+    /**
+     * Print out the opening message for the player.
+     */
+    private void printWelcome()
+    {
+        System.out.println();
+        System.out.println("Welcome to SportyZombies!");
+        System.out.println("SportyZombies is a new, incredible horror adventure game.");
+        System.out.println("Type 'help' if you need help.");
+        System.out.println();
+        System.out.println(currentLocation.getLongDescription());
     }
 
     // implementations of user commands:
@@ -145,11 +147,11 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
+        System.out.println("You are lost. But you are alone. A horde of zombies");
+        System.out.println("is running towards you.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
+        System.out.println("   go  quit  help  look  open");
     }
 
     /** 
@@ -196,7 +198,20 @@ public class Game
         }
     }
     
+    /**
+     * Look around. Prints out the long description of the current location.
+     */
     private void look(){
         System.out.println(currentLocation.getLongDescription());
+    }
+    
+    /**
+     * Try to open something.
+     * @param command The command that triggered this method call.
+     */
+    private void open(Command command) {
+        if (!command.hasSecondWord()) {
+            System.out.println("What do you want to open?");
+        }
     }
 }
