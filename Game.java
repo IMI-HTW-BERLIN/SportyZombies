@@ -15,6 +15,9 @@
  * 
  * @author  Michael Kolling and David J. Barnes
  * @version 2008.03.30
+ * 
+ * 
+ * Guten Tag. Das ist ein Test
  */
 
 public class Game 
