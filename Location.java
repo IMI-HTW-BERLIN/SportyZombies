@@ -32,11 +32,6 @@ public class Location
 
     /**
      * Define the exits of this Location.  Every direction either leads
-     * to another Location or is null (no exit there).
-     * @param north The north exit.
-     * @param east The east east.
-     * @param south The south exit.
-     * @param west The west exit.
      */
     public void addExit(String name, Location exit) 
     {

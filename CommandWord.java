@@ -19,6 +19,7 @@ public class CommandWord
         commands.put("quit", CommandWords.QUIT);
         commands.put("look", CommandWords.LOOK);
         commands.put("open", CommandWords.OPEN);
+        commands.put("sleep", CommandWords.SLEEP);
     }
     
     /**
@@ -29,5 +30,19 @@ public class CommandWord
     public boolean isCommand(String cmd)
     {
         return commands.containsKey(cmd);
+    }
+    
+    public String getCommands(){
+        String cmd ="";
+        for(String command : commands.keySet()){
+            cmd += command + ", ";
+        }
+        cmd = cmd.replaceAll(", $", "");        
+        return cmd;
+    }
+    
+    public CommandWords getEnum(String word){
+        if(commands.containsKey(word)) return commands.get(word);
+        else return CommandWords.UNKNOWN;
     }
 }

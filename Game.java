@@ -108,22 +108,50 @@ public class Game
     {
         boolean wantToQuit = false;
 
-        if(command.isUnknown()) {
-            System.out.println("I don't know what you mean...");
-            return false;
+        CommandWords commandWord = command.getCommandWord();
+        switch (commandWord){
+            case HELP:
+                printHelp();
+                break;
+                
+            case GO:
+                goLocation(command);
+                break;
+                
+            case QUIT:
+                wantToQuit = quit(command);
+                break;
+                
+            case LOOK:
+                look();
+                break;
+                
+            case OPEN:
+                open(command);
+                break;
+                
+            case SLEEP:
+                sleep();
+                break;
+                
+            case UNKNOWN:
+                System.out.println("I don't know what you mean...");
+                return false;
         }
-
-        String commandWord = command.getCommandWord();
-        if (commandWord.equals("help"))
-            printHelp();
-        else if (commandWord.equals("go"))
-            goLocation(command);
-        else if (commandWord.equals("quit"))
-            wantToQuit = quit(command);
-        else if (commandWord.equals("look"))
-            look();
-        else if (commandWord.equals("open"))
-            open(command);
+        
+        // if (commandWord.equals("help"))
+            // printHelp();
+        // else if (commandWord.equals("go"))
+            // goLocation(command);
+        // else if (commandWord.equals("quit"))
+            // wantToQuit = quit(command);
+        // else if (commandWord.equals("look"))
+            // look();
+        // else if (commandWord.equals("open"))
+            // open(command);
+        // else if (commandWord.equals("sleep"))
+            // sleep();    
+        
 
         return wantToQuit;
     }
@@ -154,7 +182,7 @@ public class Game
         System.out.println("is running towards you.");
         System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go  quit  help  look  open");
+        System.out.println(parser.getCommands());
     }
 
     /** 
@@ -216,5 +244,8 @@ public class Game
         if (!command.hasSecondWord()) {
             System.out.println("What do you want to open?");
         }
+    }
+    private void sleep(){
+        System.out.println("You've slept"+"\n"+"You feel soooo good now!");
     }
 }
