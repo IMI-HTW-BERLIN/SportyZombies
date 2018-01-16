@@ -2,8 +2,8 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 /**
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.  
+ * This class is part of the "SportyZombies" application. 
+ * "SportyZombies" is a very simple, text based adventure game.  
  * 
  * This parser reads user input and tries to interpret it as an "Adventure"
  * command. Every time it is called it reads a line from the terminal and
@@ -14,8 +14,8 @@ import java.util.StringTokenizer;
  * the known commands, and if the input is not one of the known commands, it
  * returns a command object that is marked as an unknown command.
  * 
- * @author  Michael Kolling and David J. Barnes
- * @version 2008.03.30
+ * @author  David Panagiotopulos and Luis Hankel
+ * @version 2018.01.15
  */
 public class Parser 
 {
@@ -27,17 +27,17 @@ public class Parser
      */
     public Parser() 
     {
-        commands = new CommandWord();
         reader = new Scanner(System.in);
     }
 
     /**
+     * Gets the entered command.
      * @return The next command from the user.
      */
     public Command getCommand() 
     {
         String inputLine;   // will hold the full input line
-        CommandWords word1 = null;
+        CommandWord word1 = null;
         String word2 = null;
 
         System.out.print("> ");     // print prompt
@@ -56,6 +56,10 @@ public class Parser
         return new Command(word1, word2);
     }
     
+    /**
+     * Gets a list of all commands available.
+     * @return The commands available.
+     */
     public String getCommands(){
         return commands.getCommands();
     }
