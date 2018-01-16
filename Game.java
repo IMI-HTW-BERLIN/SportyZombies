@@ -1,10 +1,10 @@
 
 
 /**
- *  This class is the main class of the "World of Zuul" application. 
- *  "World of Zuul" is a very simple, text based adventure game.  Users 
- *  can walk around some scenery. That's all. It should really be extended 
- *  to make it more interesting!
+ *  This class is the main class of the "SportyZombies" application. 
+ *  "SportyZombies" is a very simple, text based adventure game. Users 
+ *  can walk around a track and field area. We are currently adding more
+ *  features to it.
  * 
  *  To play this game, create an instance of this class and call the "play"
  *  method.
@@ -13,11 +13,8 @@
  *  Locations, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kolling and David J. Barnes
- * @version 2008.03.30
- * 
- * 
- * Guten Tag. Das ist ein Test
+ * @author  David Panagiotopulos and Luis Hankel
+ * @version 2018.01.15
  */
 
 public class Game 
@@ -108,7 +105,7 @@ public class Game
     {
         boolean wantToQuit = false;
 
-        CommandWords commandWord = command.getCommandWord();
+        CommandWord commandWord = command.getCommandWord();
         switch (commandWord){
             case HELP:
                 printHelp();
@@ -139,20 +136,6 @@ public class Game
                 return false;
         }
         
-        // if (commandWord.equals("help"))
-            // printHelp();
-        // else if (commandWord.equals("go"))
-            // goLocation(command);
-        // else if (commandWord.equals("quit"))
-            // wantToQuit = quit(command);
-        // else if (commandWord.equals("look"))
-            // look();
-        // else if (commandWord.equals("open"))
-            // open(command);
-        // else if (commandWord.equals("sleep"))
-            // sleep();    
-        
-
         return wantToQuit;
     }
     
@@ -178,7 +161,7 @@ public class Game
      */
     private void printHelp() 
     {
-        System.out.println("You are lost. But you are alone. A horde of zombies");
+        System.out.println("You are lost. But you are not alone. A horde of zombies");
         System.out.println("is running towards you.");
         System.out.println();
         System.out.println("Your command words are:");
@@ -245,6 +228,10 @@ public class Game
             System.out.println("What do you want to open?");
         }
     }
+    
+    /**
+     * Sleep. Just prints out some text.
+     */
     private void sleep(){
         System.out.println("You've slept"+"\n"+"You feel soooo good now!");
     }

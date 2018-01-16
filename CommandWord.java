@@ -2,47 +2,44 @@ import java.util.HashMap;
 /**
  * Write a description of class CommandWord here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author  David Panagiotopulos and Luis Hankel
+ * @version 2018.01.15
  */
-public class CommandWord
+public enum CommandWord
 {
-    HashMap<String, CommandWords> commands = new HashMap<>();
-
-    /**
-     * Constructor - initialise the command words.
-     */
-    CommandWord()
-    {
-        commands.put("go", CommandWords.GO);
-        commands.put("help", CommandWords.HELP);
-        commands.put("quit", CommandWords.QUIT);
-        commands.put("look", CommandWords.LOOK);
-        commands.put("open", CommandWords.OPEN);
-        commands.put("sleep", CommandWords.SLEEP);
+    GO("go"), 
+    HELP("help"), 
+    QUIT("quit"), 
+    LOOK("look"), 
+    OPEN("open"), 
+    SLEEP("sleep"), 
+    UNKNOWN(null);
+    
+    private final String command;
+    
+    CommandWord(String command) {
+        this.command = command;
     }
     
-    /**
-     * Check whether a given String is a valid command word. 
-     * @return true if a given string is a valid command,
-     * false if it isn't.
-     */
-    public boolean isCommand(String cmd)
-    {
-        return commands.containsKey(cmd);
+    private String getCommand() {
+        return this.command;
     }
     
     public String getCommands(){
-        String cmd ="";
-        for(String command : commands.keySet()){
-            cmd += command + ", ";
+        String cmd = "";
+        for(CommandWord command : CommandWord.values()){
+            cmd += command.getCommand() + ", ";
         }
         cmd = cmd.replaceAll(", $", "");        
         return cmd;
     }
     
-    public CommandWords getEnum(String word){
-        if(commands.containsKey(word)) return commands.get(word);
-        else return CommandWords.UNKNOWN;
+    public static CommandWord getEnum(String word) {
+        for(CommandWord command : CommandWord.values()){
+            if (command.getCommand().equals(word)) {
+                return command;
+            }
+        }
+        return CommandWord.UNKNOWN;
     }
 }

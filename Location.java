@@ -2,16 +2,15 @@ import java.util.HashMap;
 /**
  * Class Location - a Location in an adventure game.
  *
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.  
+ * This class is part of the "SportyZombies" application. 
+ * "SportyZombies" is a very simple, text based adventure game.  
  *
  * A "Location" represents one location in the scenery of the game.  It is 
- * connected to other Locations via exits.  The exits are labelled north, 
- * east, south, west.  For each direction, the Location stores a reference
- * to the neighboring Location, or null if there is no exit in that direction.
+ * connected to other Locations via exits.  The exits are stored in a Map.
+ * Each map entry consists of an exit name and the Location the exit leads to.
  * 
- * @author  Michael Kolling and David J. Barnes
- * @version 2008.03.30
+ * @author  David Panagiotopulos and Luis Hankel
+ * @version 2018.01.15
  */
 public class Location 
 {
@@ -31,7 +30,7 @@ public class Location
     }
 
     /**
-     * Define the exits of this Location.  Every direction either leads
+     * Add an exit to the Location.
      */
     public void addExit(String name, Location exit) 
     {
@@ -47,6 +46,8 @@ public class Location
     }
     
     /**
+     * Gets the long description of the Location. It consists of the description 
+     * plus a list of all exits.
      * @return The long description of the Location.
      */
     public String getLongDescription()
@@ -54,6 +55,10 @@ public class Location
         return "You are " + getDescription() + "\n" + getExits();
     }
     
+    /**
+     * Gets a list of all exits available for this Location.
+     * @return The exits available.
+     */
     public String getExits(){
         String allExits = "Exits: ";
         for(String name : exits.keySet()){
@@ -64,6 +69,10 @@ public class Location
         return allExits;
     }
     
+    /**
+     * Gets the Location an exit leads to.
+     * @return The Location the exit leads to.
+     */
     public Location getExit(String exit){
         return exits.get(exit);
     }
